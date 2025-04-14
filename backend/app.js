@@ -6,7 +6,13 @@ const PORT = process.env.PORT || 5500;
 //db conn
 const dbConn = require("./db/dbConfig");
 
-app.use(cors());
+const corsOptions = {
+  origin: ["https://evangadi-forum-hb.netlify.app", "http://localhost:3000"], // Add your frontend URLs
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 //any requset alog with the ride they have to post json data
 app.use(express.json());
 //user middleware file
